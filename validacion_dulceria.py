@@ -51,7 +51,7 @@ def registrar_compra():
             break
 
         except ValueError:
-            print("Formato invalido. Use AAAA-MM-DD con guiones. Ej: 2026-07-10")
+            print("Formato inválido. Use AAAA-MM-DD con guiones. Ej: 2026-07-10")
 
     #Selección de horario
     print("\n=================== HORARIOS ===================")
@@ -62,11 +62,43 @@ def registrar_compra():
     while True:
         opcion_horario = input("\nSeleccione un horario: ")
         if opcion_horario.isdigit() and int(opcion_horario) in HORARIOS:
-            horario = HORARIOS(int(opcion_horario))
+            horario = HORARIOS[int(opcion_horario)]
             break
         print("Opción de horario inválida.")
         
+    #Selección del tipo de entrada
+    print("\n=================== ENTRADAS ===================")
+
+    for codigo, entrada in TIPOS_ENTRADA.items():
+        print(codigo, "-", entrada[0], "-S/.", entrada[1])
+
+    while True:
+        opcion_entrada = input("\nSeleccione el tipo de entrada: ")
+
+        if opcion_entrada.isdigit() and int(opcion_entrada) in TIPOS_ENTRADA:
+            entrada_seleccionada = TIPOS_ENTRADA[int(opcion_entrada)]
+            break
+        print("Opción de entrada inválida.")
+
+    #Cantidad de entradas
+    while True
+        cantidad_texto = input("Ingrese la cantidad de entradas: ")
+        if cantidad_texto.isdigit() and int(cantidad_texto) > 0:
+            cantidad_entradas = int(cantidad_texto)
+            break
+        print("Ingrese una cantidad válida.")
+
+    for i in range(cantidad_entradas):
+        carrito.append({
+            "nombre": entrada_seleccionada[0],
+            "tipo": "entrada",
+            "precio": entrada_seleccionada[1]
+        })
 
 
+
+
+
+return fecha_compra, fecha_funcion, pelicula, horario, carrito
     
 
