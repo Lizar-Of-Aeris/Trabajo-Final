@@ -12,12 +12,25 @@ def registrar_compra():
     #Solicita fecha
     fecha_compra = date.today()
 
-    fecha_función = input("Ingrese la fecha de la función (AAAA-MM-DD): ")
+    while True:
+        fecha_funcion_texto = input("Ingrese la fecha de la función (AAAA-MM-DD): ")
+        try:
+            fecha_funcion = date.fromisoformat(fecha_funcion_texto)
+            break
+        except ValueError:
+            print("Formato invalido. Use AAAA-MM-DD con guiones. Ej: 2026-07-10")
 
     #Solicita cantidad de productos
     carrito = [ ]
 
-    cantidad = int(input("¿Cuántos productos agregará?: "))
+    while True:
+        cantidad_texto = input("¿Cuántos productos agregará?: ")
+        if cantidad_texto.isdigit() and int(cantidad_texto) > 0:
+            cantidad = int(cantidad_texto)
+            break
+        else:
+            print("Ingrese un número entero mayor a 0, sin letras ni símbolos.")
+
 
     #Desarrolla ciclo for
     for i in range(cantidad):
@@ -29,7 +42,6 @@ def registrar_compra():
         precio = float(input("Precio: "))
 
     #Agrega al carrito
-
         carrito.append({
             "nombre": nombre,
             "tipo": tipo,
