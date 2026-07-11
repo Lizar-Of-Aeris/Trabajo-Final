@@ -21,7 +21,7 @@ def mostrar_cartelera():
 def menu():
     while True:
         print("\n====================================")
-        print("      CINE UPC - AUTOSERVICIO")
+        print("      CINE STAR - AUTOSERVICIO")
         print("====================================")
         print("1. Realizar compra")
         print("2. Ver cartelera")
