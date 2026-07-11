@@ -53,7 +53,18 @@ def registrar_compra():
         except ValueError:
             print("Formato invalido. Use AAAA-MM-DD con guiones. Ej: 2026-07-10")
 
+    #Selección de horario
+    print("\n=================== HORARIOS ===================")
 
+    for codigo, horario_disponible in HORARIOS.items():
+        print(codigo, "-", horario_disponible)
+
+    while True:
+        opcion_horario = input("\nSeleccione un horario: ")
+        if opcion_horario.isdigit() and int(opcion_horario) in HORARIOS:
+            horario = HORARIOS(int(opcion_horario))
+            break
+        print("Opción de horario inválida.")
         
 
 
