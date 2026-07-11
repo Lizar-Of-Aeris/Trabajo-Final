@@ -6,50 +6,55 @@
 
 
 from datetime import date
+from menu import PELICULAS, mostrar_cartelera
+
+HORARIOS = {1: "2:00 PM", 2: "5:00 PM", 3: "8:00 PM"}
+
+TIPOS_ENTRADA = {
+    1: ("Entrada adulto", 20.00),
+    2: ("Entrada niño", 15.00),
+    3: ("Entrada adulto mayor", 12.00)
+}
+
+PRODUCTOS_DULCERIA = {
+    1: ("Canchita grande", 18.00),
+    2: ("Combo familiar", 35.00),
+    3: ("Gaseosa", 10.00),
+    4: ("Hot dog", 12.00),
+    5: ("Nachos", 16.00)
+}
 
 def registrar_compra():
 
-    #Solicita fecha
     fecha_compra = date.today()
+    carrito = [ ]
+
+    #Selección de película
+    mostrar_cartelera()
 
     while True:
-        fecha_funcion_texto = input("Ingrese la fecha de la función (AAAA-MM-DD): ")
+        opcion_pelicula = input("\nSeleccione una película: ")
+
+        if opcion_pelicula.isdigit() and int(opcion_pelicula) in PELICULAS:
+            pelicula = PELICULAS (int(opcion_pelicula))
+            break
+
+        print("Opción de película inválida.")
+
+    
+    #Fecha de la función
+    while True:
+        fecha_funcion_texto = input("\nIngrese la fecha de la función (AAAA-MM-DD): ")
+        
         try:
             fecha_funcion = date.fromisoformat(fecha_funcion_texto)
             break
+
         except ValueError:
             print("Formato invalido. Use AAAA-MM-DD con guiones. Ej: 2026-07-10")
 
-    #Solicita cantidad de productos
-    carrito = [ ]
 
-    while True:
-        cantidad_texto = input("¿Cuántos productos agregará?: ")
-        if cantidad_texto.isdigit() and int(cantidad_texto) > 0:
-            cantidad = int(cantidad_texto)
-            break
-        else:
-            print("Ingrese un número entero mayor a 0, sin letras ni símbolos.")
-
-
-    #Desarrolla ciclo for
-    for i in range(cantidad):
-
-        print(f"\nProducto {i+1}")
-
-        nombre = input("Nombre: ")
-        tipo = input("Tipo (entrada/dulceria): ").lower()
-        precio = float(input("Precio: "))
-
-    #Agrega al carrito
-        carrito.append({
-            "nombre": nombre,
-            "tipo": tipo,
-            "precio": precio
-        })
-
-
-return fecha_compra, fecha_función, carrito
+        
 
 
     
