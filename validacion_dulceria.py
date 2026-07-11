@@ -12,7 +12,7 @@ def registrar_compra():
     #Solicita fecha
     fecha_compra = date.today()
 
-    fecha_funcion = input("Ingrese la fecha de la función (AAAA-MM-DD): ")
+    fecha_función = input("Ingrese la fecha de la función (AAAA-MM-DD): ")
 
     #Solicita cantidad de productos
     carrito = [ ]
@@ -28,8 +28,16 @@ def registrar_compra():
         tipo = input("Tipo (entrada/dulceria): ").lower()
         precio = float(input("Precio: "))
 
+    #Agrega al carrito
 
-registrar_compra()
+        carrito.append({
+            "nombre": nombre,
+            "tipo": tipo,
+            "precio": precio
+        })
+
+
+return fecha_compra, fecha_función, carrito
 
 
     
