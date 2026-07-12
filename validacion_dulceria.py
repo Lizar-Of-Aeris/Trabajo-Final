@@ -7,6 +7,7 @@ def validar_compra(
         fecha_compra,
         fecha_funcion,
         carrito):
+        
   if producto["tipo"] == "dulceria":
 
             if str(fecha_compra) != fecha_funcion:
