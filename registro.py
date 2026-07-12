@@ -8,6 +8,8 @@
 from datetime import date
 from menu import PELICULAS, mostrar_cartelera
 from cantidades import gestionar_cantidades_y_carrito
+from ticket import generar_ticket
+from validacion import validar_compra
 
 HORARIOS = {1: "2:00 PM", 2: "5:00 PM", 3: "8:00 PM"}
 
@@ -80,6 +82,8 @@ def registrar_compra():
             print("Opción de entrada inválida.")
 
 
-    return gestionar_cantidades_y_carrito(fecha_compra, fecha_funcion, pelicula, horario, entrada_seleccionada)
+    fecha_compra, fecha_funcion, pelicula, horario, carrito = gestionar_cantidades_y_carrito(fecha_compra, fecha_funcion, pelicula, horario, entrada_seleccionada)
+    advertencias = validar_compra(fecha_compra, fecha_funcion, carrito)
     
+    generar_ticket(pelicula, fecha_funcion, horario, carrito, advertencias)
 
