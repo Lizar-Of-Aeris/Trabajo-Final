@@ -4,13 +4,13 @@
 # ==========================================
 
 from menu import menu
-
+from registro import registrar_compra
 
 def main():
     opcion = menu()
 
     if opcion == 1:
-        print("\nAquí continuará el sistema de compras...")
+        registrar_compra()
 
 
 if __name__ == "__main__":
